@@ -1,0 +1,29 @@
+<!-- - - - - - - - - - - - - Slider - - - - - - - - - - - - - - - -->
+
+<div class="fullwidthbanner-container">
+
+	<div class="fullwidthbanner" style="display: none;">
+
+		<ul>
+			{% for s in slides %}
+			<li data-transition="{{ s.transition }}" data-slotamount="{{ s.slot_amount }}">
+
+				<img src="{{ s.background.url }}" alt=""  data-thumb="{{ s.background.url }}">
+                {% for i in s.slideitem_set.all %}
+				<div class="caption {{ i.caption_style_class }} {{ i.directional_transition.directional_transition }}" data-x="{{ i.position_x_axis }}" data-y="{{ i.position_y_axis }}" data-speed="{{ i.animation_speed }}" data-easing="{{ i.animation_easing }}" data-start="{{ i.timing }}">
+                    {% if i.slide_image %}
+                    <img src="{{ i.slide_image.image.url }}" alt="">
+                    {% else %}
+                    {{ i.slide_text }}
+                    {% endif %}
+				</div>
+                {% endfor %}
+			</li>
+            {% endfor %}
+		</ul>
+
+	</div><!--/ .fullwidthbanner-->
+
+</div><!--/ .fullwidthbanner-container-->
+
+<!-- - - - - - - - - - - - - end Slider - - - - - - - - - - - - - - -->

@@ -1,0 +1,18 @@
+/*
+*	 Author: Vijay Kumar
+*	 Template: Archon - Flat & Responsive Bootstrap Admin Template
+*	 Version: 1.0
+*	 Bootstrap version: 3.0.0
+*	 Copyright 2013 bootstrapguru
+*	 www: http://bootstrapguru.com
+*	 mail: support@bootstrapguru.com
+*	 You can find our other themes on: https://bootstrapguru.com/themes/
+---------------------------------------------------------------------------------------------- */
+
+ul.actionList {
+    list-style-type: none;
+}
+ul.actionList li {
+    display: block;
+    margin: 2px 0;
+}

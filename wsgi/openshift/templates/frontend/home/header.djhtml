@@ -1,0 +1,12 @@
+<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+<header id="header">
+	<div class="container">
+		{% include 'frontend/logo.djhtml' %}
+		{% include 'frontend/eventcounter.djhtml' %}
+		<div class="clear"></div>
+		{% include 'frontend/mainnav.djhtml' %}
+	</div><!--/ .container-->
+</header><!--/ #header-->
+
+<!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->

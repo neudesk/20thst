@@ -1,0 +1,32 @@
+<div class="one-third column">
+
+	<div class="widget widget_recent_entries">
+        {% if latest_news %}
+		<h3 class="widget-title">Latest News</h3>
+		<ul>
+            {% for n in latest_news %}
+			<li>
+				<h6><a href="{% url 'news_by_id' n.id %}">{{ n.title|title }}</a></h6>
+
+				<div class="bordered alignleft">
+
+					<figure class="add-border">
+						<a class="single-image" href="#"><img width="100px;" src="{{ n.cover_thumbnail.url }}" alt="" /></a>
+					</figure>
+
+				</div><!--/ .bordered-->
+
+				<p>
+					{{ n.details|striptags|truncatewords:15 }}
+				</p>
+			</li>
+            {% endfor %}
+		</ul>
+    {% else %}
+        <ul>
+            <li>No published news yet!</li>
+        </ul>
+    {% endif %}
+	</div><!--/ .widget-->
+
+</div><!--/ .one-third-->

@@ -1,0 +1,90 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% block extrastyle %}
+<style type="text/css">
+#contactDetails ul {
+	list-style-type: none;
+}
+#contactDetails .spanLabel {
+	width: 140px;
+}
+</style>
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Contacts</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<div id="map-canvas" class="map"></div><!--/ #map-->
+
+<div class="nine columns">
+
+	<h3>Send an Email</h3>
+
+	<section id="contact">
+
+		<form method="post" action="#" class="comments-form" id="contactform">
+			{% csrf_token %}
+			{% for f in form %}
+			<p class="input-block">
+				<label for="name">{{ f.label }}</label>
+				{{ f }}
+				{% if f.errors %}
+				<a style="color: #ff6d12">{{ f.errors|striptags }}</a>
+				{% endif %}
+			</p>
+			{% endfor %}
+			<p class="input-block">
+				<button class="button default" type="submit" id="submit">
+					Submit
+				</button>
+			</p>
+
+		</form><!--/ .comments-form-->
+
+	</section><!--/ #contact-->
+
+</div><!--/ .nine .columns-->
+
+<div id="contactDetails" class="seven columns">
+	<h3>Main Office</h3>
+	<ul>
+		<li><span class="spanLabel">Address: </span> #5 20th st. East Bajac Bajac, Olongapo City, Zambales 2200</li>
+		<li><span class="spanLabel">Phone: </span> (047)222-3414</li>
+		<li><span class="spanLabel">Email: </span> 20thstchurchofchrist@gmail.com</li>
+	</ul>
+</div><!--/ .seven .columns-->
+
+</section><!--/ .main -->
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript">
+	function initialize() {
+		var myLatlng = new google.maps.LatLng(14.839457,120.287241);
+		var mapOptions = {
+			zoom : 18,
+			center : myLatlng
+		}
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+		var marker = new google.maps.Marker({
+			position : myLatlng,
+			map : map,
+			title : '20th street Church of Christ Olongapo'
+		});
+	}
+
+
+	google.maps.event.addDomListener(window, 'load', initialize); 
+</script>
+{% endblock %}

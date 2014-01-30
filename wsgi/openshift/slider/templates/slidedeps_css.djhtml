@@ -1,0 +1,3 @@
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/rs-plugin/css/settings.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/jqtree.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/jquery.jscrollpane.css" media="screen" />

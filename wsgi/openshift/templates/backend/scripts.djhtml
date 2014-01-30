@@ -1,0 +1,57 @@
+<!-- Load JS here for Faster site load =============================-->
+
+<script src="{{ STATIC_URL }}backend/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/less-1.5.0.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.ui.touch-punch.min.js"></script>
+
+<script src="{{ STATIC_URL }}backend/js/bootstrap-select.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-switch.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.tagsinput.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.placeholder.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-typeahead.js"></script>
+<script src="{{ STATIC_URL }}backend/js/application.js"></script>
+<script src="{{ STATIC_URL }}backend/js/moment.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.dataTables.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.sortable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}backend/js/jquery.gritter.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.nicescroll.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/prettify.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.noty.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bic_calendar.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.accordion.js"></script>
+<script src="{{ STATIC_URL }}backend/js/skylo.js"></script>
+
+<script src="{{ STATIC_URL }}backend/js/theme-options.js"></script>
+
+<script src="{{ STATIC_URL }}backend/js/bootstrap-progressbar.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-progressbar-custom.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-colorpicker.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-colorpicker-custom.js"></script>
+
+<script src="{{ STATIC_URL }}backend/js/raphael-min.js"></script>
+<!-- <script src="{{ STATIC_URL }}backend/js/morris-0.4.3.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/morris-custom.js"></script> -->
+
+<script src="{{ STATIC_URL }}backend/js/charts/jquery.sparkline.min.js"></script>
+
+<!-- NVD3 graphs  =============================-->
+<!-- <script src="{{ STATIC_URL }}backend/js/nvd3/lib/d3.v3.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/nv.d3.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/src/models/legend.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/src/models/pie.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/src/models/pieChart.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/src/utils.js"></script>
+<script src="{{ STATIC_URL }}backend/js/nvd3/sample.nvd3.js"></script> -->
+
+<!-- Core Jquery File  =============================-->
+<script src="{{ STATIC_URL }}backend/js/bootstrap-formhelpers.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/filereader.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/jquery.form.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-datatables.js"></script>
+<script src="{{ STATIC_URL }}backend/js/notification-custom.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-tooltip.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-confirmation.js"></script>
+<script src="{{ STATIC_URL }}backend/js/tomodal.js"></script>
+<script src="{{ STATIC_URL }}backend/js/core.js"></script>
+<script src="{{ STATIC_URL }}backend/js/dashboard-custom.js"></script>
+<script src="{{ STATIC_URL }}backend/js/sliders-custom.js"></script>

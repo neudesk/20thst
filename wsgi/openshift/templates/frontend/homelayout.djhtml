@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--[if IE 7]>					<html class="ie7 no-js" lang="en">     <![endif]-->
+<!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
+<!--[if IE 9]>					<html class="ie9 no-js" lang="en">     <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="en">
+	<!--<![endif]-->
+	<head>
+		{% include 'frontend/meta.djhtml' %}
+		{% include 'frontend/stylesheets.djhtml' %}
+		<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+	</head>
+	<body class="color-1 h-style-1 text-1">
+		{% include 'frontend/home/header.djhtml' %}
+		{% include 'frontend/home/mainslider.djhtml' %}
+		<!-- - - - - - - - - - - - - - Main - - - - - - - - - - - - - - - - -->
+		<section class="container">
+			{% include 'frontend/home/mission.djhtml' %}
+			<!-- - - - - - - - - - - - - - - Bottom Sidebar - - - - - - - - - - - - - - - - -->
+			<aside id="bottom-sidebar" class="clearfix">
+				{% include 'frontend/home/news.djhtml' %}
+				{% include 'frontend/home/events.djhtml' %}
+				{% include 'frontend/home/multimedia.djhtml' %}
+			</aside><!--/ #bottom-sidebar-->
+			<!-- - - - - - - - - - - - - end Bottom Sidebar - - - - - - - - - - - - - - - -->
+		</section><!--/ .main -->
+		<!-- - - - - - - - - - - - - end Main - - - - - - - - - - - - - - - - -->
+		<!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+		{% include 'frontend/footer.djhtml' %}
+		<!-- - - - - - - - - - - - - - end Footer - - - - - - - - - - - - - - - -->
+		{% include 'frontend/scripts.djhtml' %}
+	</body>
+</html>

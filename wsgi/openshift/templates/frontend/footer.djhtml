@@ -1,0 +1,130 @@
+<footer id="footer">
+
+	<div class="container clearfix">
+
+		<div class="five columns">
+
+			<div class="widget widget_contacts">
+
+				<div class="vcard">
+					<span class="contact street-address">Address: #5 20th st. East Bajac Bajac, Olongapo City, Zambales 2200</span>
+					<span class="contact tel">Phone:   (047)222-3414</span>
+					<span class="contact email">E-mail: 20thstchurchofchrist@gmail.com</span>
+				</div><!--/ .vcard-->
+
+			</div><!--/ .widget-->
+
+			<div class="widget widget_social">
+
+				<ul class="social-icons clearfix">
+					<li class="twitter">
+						<a href="#">Twitter<span></span></a>
+					</li>
+					<li class="facebook">
+						<a href="#">Facebook<span></span></a>
+					</li>
+					<li class="dribble">
+						<a href="#">Dribble<span></span></a>
+					</li>
+					<li class="vimeo">
+						<a href="#">Vimeo<span></span></a>
+					</li>
+					<li class="rss">
+						<a href="#">Rss<span></span></a>
+					</li>
+				</ul><!--/ .social-icons-->
+
+			</div><!--/ .widget-->
+
+		</div><!--/ .four-->
+
+		<div class="five columns">
+
+			<div class="widget widget_recent_entries">
+
+				<h3 class="widget-title">Recent Posts</h3>
+
+				<ul>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="#"><img src="{{ STATIC_URL }}frontend/images/temp/recent-img-4.jpg" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="#">Conseq uuntur magn</a></h6>
+						<div class="entry-meta">
+							Sep, 15, <a href="#">2 Comments</a>
+						</div>
+					</li>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="#"><img src="{{ STATIC_URL }}frontend/images/temp/recent-img-5.jpg" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="#">Gravida eget metus</a></h6>
+						<div class="entry-meta">
+							Sep, 15, <a href="#">2 Comments</a>
+						</div>
+					</li>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="#"><img src="{{ STATIC_URL }}frontend/images/temp/recent-img-6.jpg" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="#">Nulla vitae elit libero</a></h6>
+						<div class="entry-meta">
+							Sep, 15, <a href="#">2 Comments</a>
+						</div>
+					</li>
+				</ul>
+			</div><!--/ .widget-->
+
+		</div><!--/ .four-->
+
+		<div class="five columns">
+
+			<div class="widget widget_nav_menu">
+
+				<h3 class="widget-title">What's latest?</h3>
+
+				<ul>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">News</a>
+					</li>
+					<li>
+						<a href="#">Worship Service</a>
+					</li>
+					<li>
+						<a href="#">Gallery</a>
+					</li>
+					<li>
+						<a href="#">Offerings</a>
+					</li>
+				</ul>
+
+			</div><!--/ .widget-->
+
+		</div><!--/ .four-->
+</footer><!--/ #footer-->
+
+<!-- - - - - - - - - - - - - - end Footer - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - Bottom Footer - - - - - - - - - - - - - - -->
+
+<footer id="bottom-footer" class="clearfix">
+
+	<div class="container">
+
+		<div class="copyright">
+			Copyright © 2013  ·  20th st. Church of Christ  ·  All rights reserved
+		</div>
+
+	</div><!--/ .container-->
+
+</footer><!--/ #bottom-footer-->
+<!-- - - - - - - - - - - - - end Bottom Footer - - - - - - - - - - - - - -->

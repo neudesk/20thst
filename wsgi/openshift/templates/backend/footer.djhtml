@@ -1,0 +1,3 @@
+<div class="footer">
+	<a href="{% url 'home' %}">20th st. Church of Christ</a> © 2013 
+</div>

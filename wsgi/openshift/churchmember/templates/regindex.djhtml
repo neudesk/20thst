@@ -1,0 +1,28 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Registration</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    <div style="width: 500px; margin: 0 auto">
+        <h4>Join Us Now!</h4>
+        {% include "frontend/formtemplate.djhtml" %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- GET JQUERY FROM THE GOOGLE APIS -->
+<!--[if lt IE 9]>
+<script src="{{ STATIC_URL }}/frontend/js/selectivizr-and-extra-selectors.min.js"></script>
+<![endif]-->
+<script src="{{ STATIC_URL }}frontend/js/respond.min.js"></script>
+
+<!-- JQUERY KENBURN SLIDER  -->
+<script src="{{ STATIC_URL }}backend/js/bootstrap.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/bootstrap-formhelpers.min.js"></script>
+<script src="{{ STATIC_URL }}backend/js/filereader.min.js"></script>
+
+<script src="{{ STATIC_URL }}frontend/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="{{ STATIC_URL }}frontend/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/jquery.easing.1.3.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/jquery.cycle.all.min.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/mediaelement-and-player.min.js"></script>
+<script src="{{ STATIC_URL }}frontend/fancybox/jquery.fancybox.pack.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/custom.js"></script>
+<script src="{{ STATIC_URL }}frontend/changer/js/changer.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/tree.jquery.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/jquery.mousewheel.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/mwheelIntent.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/jquery.slimscroll.min.js"></script>
+
+<script src="{{ STATIC_URL }}backend/js/jquery.smartWizard.js"></script>

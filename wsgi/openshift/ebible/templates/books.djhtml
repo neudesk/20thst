@@ -1,0 +1,111 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% block extrastyle %}
+<style type="text/css">
+	#bibleTree {
+		padding-left: 10px;
+		/*height: 400px;
+		overflow: auto;*/
+	}
+	.hidden {
+		display: none;
+	}
+</style>
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>eBible</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<section id="content" class="ten columns">
+	{% for c in chapter.response.chapters %}
+	<h1>{{ c.parent.book.name }} <small>{{ c.chapter }}</small></h1>
+	
+	<div class="chapterText">
+		{{ c.text|safe }}
+	</div>
+	<br style="clear:both" />
+		{% if c.next %}
+		<a style="float: right" href="{% url 'ebible_chapter' c.next.chapter.id %}">{{ c.next.chapter.name }}</a>
+		{% endif %}
+		{% if c.previous %}
+		<a style="float: left" href="{% url 'ebible_chapter' c.previous.chapter.id %}">{{ c.previous.chapter.name }}</a>
+		{% endif %}
+	{% endfor %}
+	<br style="clear:both" />
+</section>
+<aside id="sidebar" class="one-third column">
+	<div class="widget widget_search">
+		<form action="http://xhtml.webtemplatemasters.com/" method="post" id="searchform">
+
+			<fieldset>
+
+				<input type="text" />
+
+				<button type="submit" title="Search">
+					Search
+				</button>
+
+			</fieldset>
+
+		</form><!--/ #searchform-->
+
+	</div><!--/ .widget-->
+	<div class="widget widget_latest_tweets">
+		<h3 class="widget-title">King James Version</h3>
+		<div class="scrollPane" id="bibleTree"></div>
+	</div><!--/ .widget-->
+
+</aside><!--/ #sidebar-->
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+	$(document).ready(function() {
+		var data = [
+		{% for b in books.response.books %}
+			{
+				label : "{{ b.name }} <i style='display: none' chapter-id='{{ b.id }}.1'></i>",
+				children: [
+				{% for c in b.chapters %}
+		            { 
+		            	label: '{{ c.id }}'.split(":")[1] + "<i style='display: none' chapter-id='{{ c.id }}'></i>"
+		            },
+		        {% endfor %}
+		        ]
+			}, 
+		{% endfor %}
+		];
+		
+		$tree = $('#bibleTree');
+		
+		$tree.tree({
+			data : data,
+			autoOpen : false,
+			autoEscape: false,
+		});
+		
+		$tree.find('.jqtree-title').click(function(){
+			var chapter_id = $(this).find("i").attr("chapter-id");
+			if (chapter_id){
+				window.location = "/ebible/" + chapter_id;
+			}
+		});
+		
+		$('.scrollPane').slimScroll({
+	        height: '400px'
+	    });
+	    $('.chapterText').slimScroll({
+	        height: '600px'
+	    });
+	}); 
+</script>
+{% endblock %}

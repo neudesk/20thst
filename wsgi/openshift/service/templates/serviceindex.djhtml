@@ -1,0 +1,56 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>{{ title|title }}</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<section id="portfolio-items" class="portfolio-items pl-col-1">
+	<article data-categories="sermons people">
+		<div class="project-thumb ten columns">
+			<video width="564" style="width: 100%; height: 100%;" id="player1" poster="{{ STATIC_URL }}frontend/media/echo-hereweare.jpg" controls="controls" preload="none">
+				<!-- MP4 source must come first for iOS -->
+				<source type="video/mp4" src="{{ STATIC_URL }}frontend/media/echo-hereweare.mp4" />
+				<!-- WebM for Firefox 4 and Opera -->
+				<source type="video/webm" src="{{ STATIC_URL }}frontend/media/echo-hereweare.webm" />
+				<!-- OGG for Firefox 3 -->
+				<source type="video/ogg" src="{{ STATIC_URL }}frontend/media/echo-hereweare.ogv" />
+				<!-- Fallback flash player for no-HTML5 browsers with JavaScript turned off -->
+				<object width="300" height="160" type="application/x-shockwave-flash" data="{{ STATIC_URL }}frontend/js/flashmediaelement.swf">
+					<param name="movie" value="{{ STATIC_URL }}frontend/js/flashmediaelement.swf" />
+					<param name="flashvars" value="controls=true&poster={{ STATIC_URL }}frontend/media/echo-hereweare.jpg&file=media/echo-hereweare.mp4" />
+					<!-- Image fall back for non-HTML5 browser with JavaScript turned off and no Flash player installed -->
+					<img src="{{ STATIC_URL }}frontend/media/echo-hereweare.jpg" width="300" height="160" alt="Here we are"
+					title="No video playback capabilities" />
+				</object>
+			</video>
+		</div><!--/ .project-thumb-->
+		<div class="project-meta six columns">
+			<h4 class="title-item"><a href="single-page-with-right-sidebar.html">Portfolio Page with Right Sidebar</a></h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis aliquet augue,
+				eu varius purus sollicitudin eget. Donec tellus nunc, sollicitudin eu congue tempor,
+				dapibus et metus. Fusce ac ipsum at magna accumsan scelerisque sedon dolor.
+				Mauris consectetur tortor elit laoreet feugiat. Maecenas facilisis dui ut mi mollis at
+				fermentum lacus euismod. Donec inibh at sem sagittis molestie. Vivamus ultrices, urna
+				vestibulum faucibus, nisl sapien semper ligula, ac vehicula.
+			</p>
+			<a href="single-page-with-right-sidebar.html" class="button default">More Info</a>
+		</div><!--/ .project-meta-->
+	</article>
+</section><!--/ #portfolio-items-->
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

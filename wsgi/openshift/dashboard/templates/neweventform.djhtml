@@ -1,0 +1,63 @@
+{% load widget_tweaks %}
+{{ form.media }}
+<form class="form-horizontal cascde-forms" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% for f in form %}
+	<div class="form-group {% if f.errors %}has-error{% endif %}">
+		{% if f.name == "start_date" or f.name == "end_date" %}
+        <label class="col-lg-2 col-md-3 control-label">{{ f.label }}</label>
+		<div class="col-lg-4 col-md-4 bfh-datepicker" {% if f.value %} data-date="{{ f.value }}" {% endif %} data-name="{{ f.name }}" data-min="today" data-format="y-m-d">
+            {% if f.errors %}<span for="" class="help-inline text-danger">{{ f.errors|striptags }}</span>{% endif %}
+		</div>
+		{% elif f.name == "start_time" or f.name == "end_time" %}
+        <label class="col-lg-2 col-md-3 control-label">{{ f.label }}</label>
+		<div class="col-lg-3 col-md-3 bfh-timepicker" {% if f.value %} data-time="{{ f.value }}" {% endif %} data-name="{{ f.name }}" data-mode="24h"></div>
+        {% elif f.name == "posted_by" %}
+            <input name="posted_by" type="hidden" value="{{ request.user.id }}">
+            {% if f.errors %}<span for="" class="help-inline text-danger">{{ f.errors|striptags }}</span>{% endif %}
+		{% elif f.name == "cover" %}
+        <label class="col-lg-2 col-md-3 control-label">{{ f.label }}</label>
+		<div class="fileinput fileinput-new" data-provides="fileinput">
+			<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 80px; overflow: hidden;">
+				{% if f.value %}<img style="width: 100%; display: block;" src="/media/{{ f.value }}" />{% endif %}
+			</div>
+			<div>
+				<span class="btn btn-default btn-file"><span class="fileinput-new">Select Banner</span><span class="fileinput-exists">Change</span> <input name="cover" type="file" /> </span>
+				<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+			</div>
+            <div>
+                <p><i class="fa fa-info-circle"></i> Banner required dimension is: 564 x 254</p>
+                {% if f.errors %}<span for="" class="help-inline text-danger">{{ f.errors|striptags }}</span>{% endif %}
+            </div>
+		</div>
+        {% elif f.name == "is_pub" %}
+        <div class="form-group">
+            <label for="is_pub" class="col-lg-2 col-md-3 control-label">Published?</label>
+            <div class="col-lg-10 col-md-9">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="is_pub" id="is_pub" value="1" checked="">
+                        Published
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="is_pub" id="is_pub" value="0">
+                        Pending
+                    </label>
+                </div>
+            </div>
+        </div>
+		{% else %}
+        <label class="col-lg-2 col-md-3 control-label">{{ f.label }}</label>
+		<div class="col-lg-10 col-md-9">
+			{{ f|attr:"class:form-control form-cascade-control input-small" }}
+			{% if f.errors %}<span for="email" class="help-inline text-danger">{{ f.errors|striptags }}</span>{% endif %}
+		</div>
+		{% endif %}
+	</div>
+	{% endfor %}
+	<div class="form-actions">
+		<input type="submit" value="submit" class="btn btn-sm bg-primary text-white btn-lg pull-right">
+	</div>
+</form>

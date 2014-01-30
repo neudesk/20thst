@@ -1,0 +1,55 @@
+{% load widget_tweaks %}
+<form action="." method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="row">
+        {% for f in form %}
+        {% if f.name == "slide" %}
+            <input type="hidden" name="{{ f.name }}" value="{{ s.id }}" />
+        {% elif f.name == "background" or f.name == "image" %}
+        <div class="col-md-6">
+            <div class="col-md-3">
+                {{ f.label_tag }}
+            </div>
+            <div class="col-md-8">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 80px; overflow: hidden;">
+                        {% if f.value %}<img style="width: 100%; display: block;" src="/media/{{ f.value }}" />{% endif %}
+                    </div>
+                    <div>
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Select Image Element</span><span class="fileinput-exists">Change</span>
+                            <input name="{{ f.name }}" type="file" />
+                        </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                    <div>
+                        {% if f.name == "background" %}
+                        <p><i class="fa fa-info-circle"></i> Background max dimension is: 2000 x auto</p>
+                        {% else %}
+                        <p><i class="fa fa-info-circle"></i> Image max dimension is: 564 x auto</p>
+                        {% endif %}
+                        {% if f.errors %}<span for="" class="help-inline text-danger">{{ f.name }} {{ f.errors|striptags }}</span>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            <div class="col-md-3">
+                {{ f.label_tag }}
+            </div>
+            <div class="col-md-8">
+                {{ f|attr:"class: form-control form-cascade-control input-small" }}
+                {% if f.errors %}<span for="" class="help-inline text-danger">{{ f.errors|striptags }}</span>{% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="row"></div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary">
+                Submit and Edit
+            </button>
+        </div>
+    </div>
+</form>

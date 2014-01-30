@@ -1,0 +1,48 @@
+<nav id="navigation" class="navigation clearfix">
+
+	<ul class="clearfix">
+		<li>
+			<a href="{% url 'home' %}">Home</a>
+		</li>
+		<li>
+			<a href="{% url 'home' %}">Evangelism</a>
+			<ul>
+				<li>
+					<a href="{% url 'service' %}">Sermon</a>
+				</li>
+			</ul>
+		</li>
+        <li>
+			<a href="{% url 'home' %}">Fellowship</a>
+			<ul>
+				<li>
+					<a href="{% url 'service' %}"></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="{% url 'ebible' %}">Bible</a>
+		</li>
+		<li>
+			<a href="{% url 'home' %}">Gallery</a>
+		</li>
+		<li>
+			<a href="{% url 'event' %}">Events</a>
+			<ul>
+				<li>
+					<a href="{% url 'event' %}">Events</a>
+				</li>
+				<li>
+					<a href="{% url 'news' %}">News</a>
+				</li>
+			</ul>
+		</li>
+        <li>
+            <a href="{% url 'donation' %}">Offertory</a>
+        </li>
+		<li>
+			<a href="{% url 'contacts' %}">Contacts</a>
+		</li>
+	</ul>
+
+</nav><!--/ #navigation-->

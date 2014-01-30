@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+        <div style="padding: 20px;">
+            <h4>Greetings,</h4>
+
+            <p>
+                {{ message|safe }}
+            </p>
+
+            <p style="background: #F6F6F6; padding: 10px;">
+                <h4>20th st. Church of Christ</h4>
+                <ul style="list-style-type: none;">
+                    <li><span>Address: </span> #5 20th st. East Bajac Bajac, Olongapo City, Zambales 2200</li>
+                    <li><span>Phone: </span> (047)222-3414</li>
+                    <li><span>Email: </span> 20thstchurchofchrist@gmail.com</li>
+                </ul>
+            </p>
+        </div>
+    </body>
+</html>

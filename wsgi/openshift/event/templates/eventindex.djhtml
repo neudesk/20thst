@@ -1,0 +1,120 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Events</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<section id="content" class="ten columns">
+	{% if post %}
+		{% paginate 5 post %}
+		{% for e in post %}
+	<article class="entry event">
+			{% if e.cover_banner %}
+		<div class="bordered">
+			<figure class="add-border">
+				<a class="single-image" href="#"><img src="{{ e.cover_banner.url }}" alt="" /></a>
+			</figure>
+		</div><!--/ .bordered-->
+			{% endif %}
+			{% if e.start_date %}
+		<div class="entry-meta">
+			<span class="date">{{ e.start_date|date:"d" }}</span>
+			<span class="month">{{ e.end_date|date:"M" }}</span>
+		</div><!--/ .entry-meta-->
+			{% endif %}
+		<div class="entry-body">
+			<div class="entry-title">
+				<small>{{ e.category|title }}</small>
+				<h2 class="title"><a href="{% url 'event_by_id' e.id %}">{{ e.title|title }} </a></h2>
+				<span class="e-date"><b>{{ e.start_date|date:"M d, Y" }} – {{ e.end_date|date:"M d, Y" }}</b> | <strong>{{ e.start_time|date:"P" }} – {{ e.end_time|date:"P" }} </strong> </span>
+				<span class="place"><b>Place: </b>{{ e.place|title }}</span><span class="place"> | <b>Posted: </b>{{ e.posted|naturaltime }} by {{ e.posted_by.first_name|title }} {{ e.posted_by.last_name|title }}</span>
+			</div><!--/ .entry-title-->
+			<p>
+				{{ e.details|striptags|capfirst|truncatewords:15 }}
+			</p>
+			<a href="{% url 'event_by_id' e.id %}" class="button default small">Event Details</a>
+		</div><!--/ .entry-body -->
+	</article><!--/ .entry-->
+		{% endfor %}
+		{% show_pages %}
+	{% else %}
+	<div class="entry-body">
+			<div class="entry-title">
+				<h2 class="title"><a href="event-single.html">No upcoming events yet.</a></h2>
+			</div>
+	</div>
+	{% endif %}
+</section>
+<aside id="sidebar" class="one-third column">
+
+	<div class="widget widget_search">
+
+		<form action="http://xhtml.webtemplatemasters.com/" method="post" id="searchform">
+
+			<fieldset>
+
+				<input type="text" />
+
+				<button type="submit" title="Search">
+					Search
+				</button>
+
+			</fieldset>
+
+		</form><!--/ #searchform-->
+
+	</div><!--/ .widget-->
+
+	{% if comments %}
+	<h4>Latest Comments</h4>
+	<section id="comments" class="widgetBox">
+		<ol class="comments-list">
+				{% paginate 3 comments using 'comment_page' %}
+				{% for c in comments %}
+			<li class="comment {% cycle 'grey' '' %}">
+				<article>
+					<div class="bordered alignleft">
+						<figure class="add-border">
+							<a class="single-image" href="#"><img width="40" src="{% gravatar_url c.user.email %}" alt="" /></a>
+						</figure>
+					</div><!--/ .bordered-->
+					<div class="comment-body">
+						<div class="comment-meta">
+							{% if c.event %}
+								<h6><a href="/{{ c.event.post_type }}/{{ c.event.id }}">{{ c.event }}</a></h6>
+							{% endif %}
+							<div class="author">
+								{{ c.user|title }}
+							</div>
+							<div class="date">
+								{{ c.posted|naturaltime }}
+							</div>
+						</div><!--/ .comment-meta -->
+						<p>
+							{{ c.message }}
+						</p>
+					</div><!--/ .comment-body -->
+				</article>
+			</li>
+				{% endfor %}
+		</ol>
+	</section><!--/ #comments-->
+	{% show_pages %}
+	{% endif %}
+</aside><!--/ #sidebar-->
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

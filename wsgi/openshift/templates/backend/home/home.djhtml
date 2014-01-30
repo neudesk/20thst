@@ -1,0 +1,31 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li class="active">
+				<a href="{% url 'office' %}">Dashboard</a>
+			</li>
+		</ul>
+
+		<div class="form-group hiddn-minibar pull-right">
+			<input type="text" class="form-control form-cascade-control nav-input-search" size="20" placeholder="Search through site" />
+
+			<span class="input-icon fui-search"></span>
+		</div>
+
+		<h3 class="page-header"><i class="fa fa fa-dashboard"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+{% endblock %}

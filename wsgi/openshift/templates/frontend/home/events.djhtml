@@ -1,0 +1,41 @@
+<div class="one-third column">
+	<div class="widget widget_upcoming_events">
+		{% if current_events %}
+		<h3 class="widget-title">Upcoming Events</h3>
+		<ul>
+			{% for e in current_events %}
+			<li>
+				<div class="entry-meta">
+					<span class="date">{{ e.start_date|date:"d" }}</span>
+					<span class="month">{{ e.start_date|date:"M" }}</span>
+				</div><!--/ .entry-meta-->
+
+				<h6><a href="{% url 'event_by_id' e.id %}">{{ e.title|title }}</a></h6>
+				<span class="place">{{ e.place|title }}</span>
+				<span class="time">{{ e.start_time|date:"P" }} - {{ e.end_time|date:"P" }}</span>
+			</li>
+			{% endfor %}
+		</ul>
+		{% elif previous_events %}
+		<h3 class="widget-title">Previous Events</h3>
+			<ul>
+				{% for e in previous_events %}
+				<li>
+					<div class="entry-meta">
+						<span class="date">{{ e.start_date|date:"d" }}</span>
+						<span class="month">{{ e.start_date|date:"M" }}</span>
+					</div><!--/ .entry-meta-->
+	
+					<h6><a href="{% url 'event_by_id' e.id %}">{{ e.title|title }}</a></h6>
+					<span class="place">{{ e.place|title }}</span>
+					<span class="time">{{ e.start_time|date:"P" }} - {{ e.end_time|date:"P" }}</span>
+				</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+		<h3 class="widget-title">Upcoming Events</h3>
+		<p>There is no church events yet.</p>
+		{% endif %}
+	</div><!--/ .widget-->
+
+</div><!--/ .one-third-->

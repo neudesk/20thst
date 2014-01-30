@@ -1,0 +1,20 @@
+<link href="{{ STATIC_URL }}backend/css/bootstrap.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}backend/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+
+<link rel="shortcut" href="{{ STATIC_URL }}frontend/images/favicon.html" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/skeleton.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/style.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/mediaelementplayer.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/fancybox/jquery.fancybox.css" media="screen" />
+
+<link href="{{ STATIC_URL }}backend/css/filereader.css" rel="stylesheet">
+
+<!-- REVOLUTION BANNER CSS SETTINGS -->
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/rs-plugin/css/settings.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/jqtree.css" media="screen" />
+<link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/jquery.jscrollpane.css" media="screen" />
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}frontend/css/alerts.css" media="screen" /> -->
+
+<!-- HTML5 SHIV + DETECT TOUCH EVENTS -->
+<script type="text/javascript" src="{{ STATIC_URL }}frontend/js/modernizr.custom.js"></script>
+<script src="{{ STATIC_URL }}frontend/js/jquery-1.8.3.min.js"></script>

@@ -1,0 +1,10 @@
+*.py[co]
+*.sw[po]
+*.bak
+*.orig
+*~
+.project
+.pydevproject
+.venv/
+wsgi/openshift/media
+

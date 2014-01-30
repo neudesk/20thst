@@ -1,0 +1,30 @@
+{% extends 'backend/loginlayout.djhtml' %}
+{% block content %}
+<h2 class="page-header text-center text-primary" style="border-bottom: 0;"><img style="width: 240px; margin: auto auto;" src="{{ STATIC_URL }}frontend/images/logo.png" /></h2>
+<div class="login-holder col-md-6 col-md-offset-3">
+	{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	<form role="form" action="{% url 'login' %}" method="post">
+		{% csrf_token %}
+		<input name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{% url 'office' %}{% endif %}" type="hidden" />
+		<div class="form-group">
+			<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter username" name="username">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+		</div>
+		<div class="form-footer">
+			<button type="submit" class="btn btn-info pull-right btn-submit">
+				Login
+			</button>
+		</div>
+
+	</form>
+</div>
+{% endblock %}

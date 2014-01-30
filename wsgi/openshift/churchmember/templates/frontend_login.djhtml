@@ -1,0 +1,27 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Logging In</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    <div style="width: 250px; margin: 0 auto;">
+        {% include "frontend/loginform.djhtml" %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

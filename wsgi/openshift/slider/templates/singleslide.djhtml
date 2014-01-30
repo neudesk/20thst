@@ -1,0 +1,22 @@
+{% if s %}
+<div class="row">
+    <div class="fullwidthbanner-container">
+        <div class="fullwidthbanner" style="display: none;">
+            <ul>
+                <li data-transition="{{ s.transition }}" data-slotamount="{{ s.slot_amount }}">
+                    <img src="{{ s.background.url }}" alt=""  data-thumb="{{ s.background.url }}">
+                    {% for i in s.slideitem_set.all %}
+                    <div class="caption {% if not i.image %}{{ i.caption_style_class }}{% endif %} {{ i.directional_transition.directional_transition }}" data-x="{{ i.position_x_axis }}" data-y="{{ i.position_y_axis }}" data-speed="{{ i.animation_speed }}" data-easing="{{ i.animation_easing }}" data-start="{{ i.timing }}">
+                        {% if i.image %}
+                            <img src="{{ i.image.url }}" alt="">
+                        {% else %}
+                            {{ i.slide_text }}
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div><!--/ .fullwidthbanner-->
+    </div><!--/ .fullwidthbanner-container-->
+</div>
+{% endif %}

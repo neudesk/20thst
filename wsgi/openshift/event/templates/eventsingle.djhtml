@@ -1,0 +1,172 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+<style>
+	.grey {
+		background: #f9fbfc;
+	}
+	.cbox {
+		height: auto;
+		padding: 5px;
+	}
+	.comment, .comment:first-child {
+		padding: 4px;
+	}
+	.comment > article {
+		padding: 4px;
+		border: none;
+	}
+	.exceptionHandler {
+		color: red;
+		margin-bottom: 4px;
+	}
+	.exceptionHandler ul li {
+		border: none;
+	}
+</style>
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<a title="Home" href="{% url 'event' %}">Event</a>
+	<span>{{ title|title }}</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<section id="content" class="ten columns">
+	<article class="entry event">
+		{% if post.cover_banner %}
+		<div class="bordered">
+			<figure class="add-border">
+				<a class="single-image" href="#"><img src="{{ post.cover_banner.url }}" alt="" /></a>
+			</figure>
+		</div><!--/ .bordered-->
+		{% endif %}
+		{% if post.start_date %}
+		<div class="entry-meta">
+			<span class="date">{{ post.start_date|date:"d" }}</span>
+			<span class="month">{{ post.start_date|date:"M" }}</span>
+		</div><!--/ .entry-meta-->
+		{% endif %}
+		<div class="entry-body">
+			<div class="entry-title">
+				<small>{{ post.category|title }}</small>
+				<h2 class="title"><a href="event-single.html">{{ post.title|title }} </a></h2>
+				<span class="e-date"><b>{{ post.start_date|date:"M d, Y" }} – {{ post.end_date|date:"M d, Y" }}</b> | <strong>{{ post.start_time|date:"P" }} – {{ post.end_time|date:"P" }} </strong> </span>
+				<span class="place"><b>Place: </b>{{ post.place|title }}</span><span class="place"> | <b>Posted: </b>{{ post.posted|naturaltime }} by {{ post.posted_by.first_name|title }} {{ post.posted_by.last_name|title }}</span>
+			</div><!--/ .entry-title-->
+			<p>
+				{{ post.details|safe }}
+			</p>
+			<div style="clear: both">
+				<br />
+				<div class="border-divider"></div>
+				<section id="respond">
+					<div class="exceptionHandler">
+						{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+							<li{% if message.tags %} class=""{% endif %}>
+								{{ message }}
+							</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
+					{% if request.user.is_authenticated %}
+					<h4>Leave a comment</h4>
+					<form method="post" action="{% url 'create_event_comment' %}" class="comments-form">
+						{% csrf_token %}
+						<input name="next" type="hidden" value="{{ request.path }}" />
+						<input name="event_id" type="hidden" value="{{ post.id }}" />
+						<p style="float: left; margin-right: 10px;">
+							{% gravatar request.user.email 50 %}
+						</p>
+						<p class="input-block">
+							<textarea name="message" id="message" style="min-height: 50px; max-height: 50px; height: 50px;"></textarea>
+							<br />
+							<button class="button default" type="submit" id="submit">
+								Comment
+							</button>
+						</p>
+
+					</form><!--/ .comments-form-->
+					{% else %}
+					<p>You must be logged in to add your comment on this post.</p>
+					<p><a href="#">Sign In</a> | <a href="#">Register</a></p>
+					{% endif %}
+				</section><!--/ #respond-->
+			</div>
+		</div><!--/ .entry-body -->
+	</article><!--/ .entry-->
+
+</section><!--/ #content-->
+
+<aside id="sidebar" class="one-third column">
+
+	<div class="widget widget_search">
+
+		<form action="http://xhtml.webtemplatemasters.com/" method="post" id="searchform">
+
+			<fieldset>
+
+				<input type="text" />
+
+				<button type="submit" title="Search">
+					Search
+				</button>
+
+			</fieldset>
+
+		</form><!--/ #searchform-->
+
+	</div><!--/ .widget-->
+
+	<section id="comments">
+
+		<h4>{{ post.comment_set.all.count }} Comments</h4>
+
+		<ol class="comments-list">
+			{% if post.comment_set.all %}
+				{% for c in post.comment_set.all %}
+			<li class="comment {% cycle 'grey' '' %}">
+				<article>
+					<div class="bordered alignleft">
+						<figure class="add-border">
+							<a class="single-image" href="#"><img width="40" src="{% gravatar_url c.user.email %}" alt="" /></a>
+						</figure>
+					</div><!--/ .bordered-->
+					<div class="comment-body">
+						<div class="comment-meta">
+							<div class="author">
+								{{ c.user|title }}
+							</div>
+							<div class="date">
+								{{ c.posted|naturaltime }}
+							</div>
+						</div><!--/ .comment-meta -->
+						<p>
+							{{ c.message }}
+						</p>
+					</div><!--/ .comment-body -->
+				</article>
+			</li>
+				{% endfor %}
+			{% endif %}
+		</ol>
+
+	</section><!--/ #comments-->
+
+</aside><!--/ #sidebar-->
+<div class="border-divider"></div>
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

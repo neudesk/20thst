@@ -1,0 +1,103 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+
+{% block extracss %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			<li class="active">
+				<a href="{% url 'dashboard_event' %}">{{ title|title }}</a>
+			</li>
+		</ul>
+
+		<h3 class="page-header"><i class="fa fa-table"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+<!-- Tables condensed and contextual -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel ">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-striped display" {% if post %}id="eventTable"{% endif %}>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Ministry</th>
+                            <th>Active</th>
+                            <th>Staff</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if post %}
+                    {% for e in post %}
+                        <tr class="">
+                            <td><a style="max-height: 80px; overflow: hidden; display: block;"><img src="{{ e.avatar.url }}" width="100" /></a></td>
+                            <td>{{ e.user.first_name|title }}</td>
+                            <td>{{ e.user.last_name|title }}</td>
+                            <td>{{ e.ministry|title }}</td>
+                            {% if e.user.is_active %}
+                            <td><a style="color: #09ff04;"><i class="fa fa-check-circle"></i></a></td>
+                            {% else %}
+                            <td><a style="color: #808080;"><i class="fa fa-check-circle"></i></a></td>
+                            {% endif %}
+                            {% if e.user.is_staff %}
+                            <td><a style="color: #09ff04;"><i class="fa fa-check-circle"></i></a></td>
+                            {% else %}
+                            <td><a style="color: #808080;"><i class="fa fa-check-circle"></i></a></td>
+                            {% endif %}
+                            <td>
+                                <ul class="actionList">
+                                    <li><a data-toggle="delete" href="#" data-href="#{% url 'dashboard_event_delete' e.id %}?next={{ request.path }}"><i class="fa fa-trash-o btn btn-success btn-xs" <="" i=""> View</i></button></li>
+                                    <li><a href="#{% url 'dashboard_event_update' e.id %}"><i class="fa fa-pencil-square-o btn btn-primary btn-xs" <="" i=""> Update</i></a></li>
+                                    <li><a data-toggle="delete" href="#" data-href="#{% url 'dashboard_event_delete' e.id %}?next={{ request.path }}"><i class="fa fa-trash-o btn btn-danger btn-xs" <="" i=""> Delete</i></button></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% else %}
+                        <tr class="">
+                            <td colspan="4">No users found!</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Ministry</th>
+                            <th>Active</th>
+                            <th>Staff</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /panel body -->
+		</div>
+	</div>
+</div>
+{% endblock %}
+

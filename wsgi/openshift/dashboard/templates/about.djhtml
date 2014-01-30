@@ -1,0 +1,94 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+
+{% block extracss %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			<li class="active">
+				<a href="{% url 'dashboard_about' %}">{{ title|title }}</a>
+			</li>
+		</ul>
+
+		<h3 class="page-header"><i class="fa fa-lightbulb-o"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+<!-- Tables condensed and contextual -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel ">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-striped display" {% if post %}id="eventTable"{% endif %}>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Posted</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if post %}
+                    {% for e in post %}
+                        <tr class="">
+                            <td><a style="display: block; height: 60px; overflow: hidden"><img src="{{ e.cover_thumbnail.url }}" width="150" /></a></td>
+                            <td>{{ e.title|title }}</td>
+                            <td>{{ e.details|striptags|truncatewords:15 }}</td>
+                            <td>{{ e.posted|naturaltime }}</td>
+                            {% if e.is_pub %}
+                            <td><a style="color: #09ff04;"><i class="fa fa-check-circle"></i></a></td>
+                            {% else %}
+                            <td><a style="color: #f0f0f0;"><i class="fa fa-check-circle"></i></a></td>
+                            {% endif %}
+                            <td>
+                                <ul style="list-style-type: none;">
+                                    <li><a href="{% url 'dashboard_about_update' e.id %}"><i class="fa fa-pencil-square-o btn btn-primary btn-xs" <="" i=""> Update</i></a></li>
+                                    <li><a data-toggle="delete" href="#" data-href="{% url 'dashboard_event_delete' e.id %}?next={{ request.path }}"><i class="fa fa-trash-o btn btn-danger btn-xs" <="" i=""> Delete</i></button></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% else %}
+                        <tr class="">
+                            <td colspan="8">No church about article yet!</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Posted</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /panel body -->
+		</div>
+	</div>
+</div>
+{% endblock %}

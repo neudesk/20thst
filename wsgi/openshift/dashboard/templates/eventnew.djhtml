@@ -1,0 +1,55 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extracss %}
+{% load widget_tweaks %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			<li class="">
+				<a href="{% url 'dashboard_event' %}">Events</a>
+			</li>
+			<li class="active">
+				<a href="#">{{ title|title }}</a>
+			</li>
+		</ul>
+
+		<h3 class="page-header"><i class="fa fa fa-dashboard"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+{% if form %}
+<!-- Form elements -->
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-cascade">
+			<div class="panel-body ">
+				<div class="ro">
+					<div class="col-mol-md-offset-2">
+						{% include "neweventform.djhtml" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Form elements -->
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extrastyle %}
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Account Activation</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+<section id="content" class="ten columns">
+    {% include "frontend/formtemplate.djhtml" %}
+</section>
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% if messages %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel-heading">
+			<h3 class="panel-title text-primary"> Heads up! <span class="pull-right">
+		</div>
+		<div class="col-md-12">
+			<!-- Alert Info -->
+			{% for m in messages %}
+			<div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">
+				{{ m|capfirst }}
+			</div>
+			{% endfor %}
+		</div><!-- /col-md-12 -->
+	</div>
+</div>
+{% endif %}

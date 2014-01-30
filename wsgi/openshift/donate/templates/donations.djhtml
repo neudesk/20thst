@@ -1,0 +1,66 @@
+{% extends "frontend/base.djhtml" %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% block extrastyle %}
+<link rel="stylesheet" href="{{ STATIC_URL }}backend/css/smart_wizard_vertical.css" media="screen" />
+<style type="text/css">
+	.swMain ul.anchor li a.selected label,
+	.swMain ul.anchor li a.selected span {
+		color: #FFFFFF;
+	}
+	.swMain .stepContainer div.content {
+		overflow-x: hidden;
+	}
+</style>
+{% endblock %}
+
+{% block bread %}
+<div class="breadcrumbs">
+
+	<a title="Home" href="{% url 'home' %}">Home</a>
+	<span>Offerings</span>
+
+</div><!--/ .breadcrumbs-->
+{% endblock %}
+
+{% block content %}
+{% include "formwizard.djhtml" %}
+{% comment %}
+<div class="nine columns">
+	<section id="contact">
+		
+		<form method="post" action="#" class="comments-form" id="contactform">
+			{% csrf_token %}
+			{% for f in form %}
+			<p class="input-block">
+				<label for="name">{{ f.label }}</label>
+				{{ f }}
+				{% if f.errors %}
+				<a style="color: red">{{ f.errors|striptags }}</a>
+				{% endif %}
+			</p>
+			{% endfor %}
+			<p class="input-block">
+				<button class="button default" type="submit" id="submit">
+					Submit
+				</button>
+			</p>
+
+		</form><!--/ .comments-form-->
+
+	</section><!--/ #contact-->
+
+</div><!--/ .nine .columns-->
+
+<div id="contactDetails" class="seven columns">
+</div><!--/ .seven .columns-->
+
+</section><!--/ .main -->
+{% endcomment %}
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ STATIC_URL }}backend/js/jquery.smartWizard.js"></script>
+<script src="{{ STATIC_URL }}backend/js/smartWizard-custom.js"></script>
+{% endblock %}

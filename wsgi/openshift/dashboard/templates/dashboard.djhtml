@@ -1,0 +1,32 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+
+{% block extracss %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li class="active">
+				<a href="{% url 'dashboard' %}">{{ title|title }}</a>
+			</li>
+		</ul>
+
+		<h3 class="page-header"><i class="fa fa fa-dashboard"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+{% endblock %}

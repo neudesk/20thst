@@ -1,0 +1,23 @@
+<form method="post" action="{% url 'frontend_login' %}" class="comments-form" id="logform">
+    {% csrf_token %}
+    {% for f in form %}
+    <p class="input-block">
+        <label for="name">{{ f.label }}</label>
+        {{ f }}
+        {% if f.errors %}
+        <a style="color: #ff6d12">{{ f.errors|striptags }}</a>
+        {% endif %}
+    </p>
+    {% endfor %}
+    <p class="input-block">
+        <button class="button default" type="submit" id="submit">
+            Login
+        </button>
+    <ul class="inlineLinks">
+        <li><a href="{% url 'register' %}">Register Now!</a></li>
+        <li>|</li>
+        <li><a href="{% url 'resend_activation' %}">Request Activation</a></li>
+    </ul>
+    </p>
+
+</form><!--/ .comments-form-->

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if IE 7]>					<html class="ie7 no-js" lang="en">     <![endif]-->
+<!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
+<!--[if IE 9]>					<html class="ie9 no-js" lang="en">     <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="en">
+	<!--<![endif]-->
+
+	<!-- Mirrored from xhtml.webtemplatemasters.com/blessing/portfolio-1-column-full-width.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 13 Sep 2013 04:10:13 GMT -->
+	<head>
+		{% include 'frontend/meta.djhtml' %}
+		{% include 'frontend/stylesheets.djhtml' %}
+		{% block extrastyle %}
+		{% endblock %}
+		<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+	</head>
+	<body class="color-1 h-style-1 text-1">
+
+		<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+		<header id="header">
+
+			<div class="container">
+
+				<!-- - - - - - - - - - - - Logo - - - - - - - - - - - - - -->
+
+				{% include 'frontend/logo.djhtml' %}
+
+				<!-- - - - - - - - - - - end Logo - - - - - - - - - - - - -->
+
+				<!-- - - - - - - - - - - - Event Holder - - - - - - - - - - - - - -->
+
+				{% include 'frontend/eventcounter.djhtml' %}
+
+				<!-- - - - - - - - - - - end Event Holder - - - - - - - - - - - - -->
+
+				<div class="clear"></div>
+
+				<!-- - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - -->
+				{% include 'frontend/mainnav.djhtml' %}
+				<!-- - - - - - - - - - - - end Navigation - - - - - - - - - - - - - -->
+
+			</div><!--/ .container-->
+
+		</header><!--/ #header-->
+		<!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->
+
+		<!-- - - - - - - - - - - - - - Page Header - - - - - - - - - - - - - - - -->
+		<section class="page-header">
+			<div class="container">
+				<h1>{{ title|title }}</h1>
+			</div><!--/ .container-->
+		</section><!--/ .page-header-->
+		<!-- - - - - - - - - - - - - end Page Header - - - - - - - - - - - - - - -->
+		<!-- - - - - - - - - - - - - - Main - - - - - - - - - - - - - - - - -->
+		<section class="main container clearfix">
+			<!-- - - - - - - - - - Breadcrumbs - - - - - - - - - - - - -->
+			{% block bread %}
+			{% endblock %}
+			<!-- - - - - - - - - end Breadcrumbs - - - - - - - - - - - -->
+			{% for m in messages %}
+			<div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %}">
+				{{ m|safe }}
+			</div>
+			{% endfor %}
+			{% block content %}
+			{% endblock %}
+		</section><!--/ .main -->
+		<!-- - - - - - - - - - - - - end Main - - - - - - - - - - - - - - - - -->
+		<!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+		{% include 'frontend/footer.djhtml' %}
+		{% include 'frontend/scripts.djhtml' %}
+		{% block extrajs %}
+		{% endblock %}
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.widgetBox').slimScroll({
+					height: '350px',
+				});
+			});
+		</script>
+	</body>
+</html>

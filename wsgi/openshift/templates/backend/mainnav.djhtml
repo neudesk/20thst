@@ -1,0 +1,124 @@
+<!-- .left-sidebar -->
+<div class="left-sidebar">
+	<div class="sidebar-holder">
+		<ul class="nav  nav-list">
+
+			<!-- sidebar to mini Sidebar toggle -->
+			<li class="nav-toggle">
+				<button class="btn  btn-nav-toggle text-primary">
+					<i class="fa fa-angle-double-left toggle-left"></i>
+				</button>
+			</li>
+
+			<li class="{% if pagename == 'dashboard' %}active{% endif %}" >
+				<a href='{% url 'dashboard' %}' data-original-title='Dashboard'><i class='fa fa-dashboard'></i><span class='hidden-minibar'> Dashboard</span></a>
+			</li>
+            <li class="submenu {% if pagename == 'about' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="About The Church">
+                    <i class="fa fa-lightbulb-o"></i>
+                    <span class='hidden-minibar'> About The Church
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_about' %}" data-original-title='Weekly Sermons'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> About Lists</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_about_new' %}" data-original-title='Create New Events'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Create About Article</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'event' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Events">
+                    <i class='fa fa-table'></i>
+                    <span class='hidden-minibar'> Church Events
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_event' %}" data-original-title='Event List'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> Event Lists</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_event_new' %}" data-original-title='Create New Events'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Create new event</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'news' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Church News">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class='hidden-minibar'> Church News
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_news' %}" data-original-title='Event List'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> News Lists</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_news_new' %}" data-original-title='Create New Events'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Create church news</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'service' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Sermons">
+                    <i class="fa fa-pagelines"></i>
+                    <span class='hidden-minibar'> Sermons
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_service' %}" data-original-title='Weekly Sermons'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> Weekly Sermon Lists</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_service' %}" data-original-title='Create New Events'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Create Weekly Sermon</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'member' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Sermons">
+                    <i class="fa fa-group"></i>
+                    <span class='hidden-minibar'> Church Staff and Officers
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_staff' %}" data-original-title='Members Lists'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> Staff, Admin and Members List</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_staff_new' %}" data-original-title='Create New Staff'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Add church staff/officer</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_staff_ministry_new' %}?next={% url 'dashboard_staff_new' %}" data-original-title='Create New Ministry'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Add new ministry</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'slides' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Sermons">
+                    <i class="fa fa-desktop"></i>
+                    <span class='hidden-minibar'> Slides Builder
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_slides' %}" data-original-title='Weekly Sermons'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> Slides</span></a>
+                    </li>
+                    <li class=' '><a href="{% url 'dashboard_slides_new' %}" data-original-title='Create New Slide'>
+                        <i class="fa fa-pencil-square-o"></i><span class='hidden-minibar'> Create New Slides</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu {% if pagename == 'fellowship' %}active{% endif %} ">
+                <a class="dropdown" href="#" data-original-title="Fellowship">
+                    <i class="fa fa-desktop"></i>
+                    <span class='hidden-minibar'> Fellowship Page
+                    </span>
+                </a>
+                <ul>
+                    <li class=' '><a href="{% url 'dashboard_fellowship' %}" data-original-title='Fellowship Pages'>
+                        <i class="fa fa-list-alt"></i><span class='hidden-minibar'> Fellowship Pages</span></a>
+                    </li>
+                </ul>
+            </li>
+		</ul>
+	</div>
+</div>
+<!-- /.left-sidebar -->

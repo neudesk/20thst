@@ -1,0 +1,73 @@
+{% extends 'backend/base.djhtml' %}
+{% load humanize %}
+{% load endless %}
+{% load imagekit %}
+{% load gravatar %}
+{% block extracss %}
+{% load widget_tweaks %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-mod-12">
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			<li class="">
+				<a href="{% url 'dashboard_about' %}">Church Officers Ministry</a>
+			</li>
+			<li class="active">
+				<a href="#">{{ title|title }}</a>
+			</li>
+		</ul>
+
+		<h3 class="page-header"><i class="fa fa fa-dashboard"></i> {{ title }} <i class="fa fa-info-circle animated bounceInDown show-info"></i></h3>
+
+		<blockquote class="page-information hidden">
+			<p>
+				{{ pagedesc }}
+			</p>
+		</blockquote>
+	</div>
+</div>
+{% if form %}
+<!-- Form elements -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                ×
+            </button>
+            <h4>Authentication Levels</h4>
+            <p>
+                <ul>
+                    <li><strong>Non-tech</strong> : No administrator accessed.</li>
+                    <li><strong>auth 1</strong> : Able to create, update and delete web content and users.</li>
+                    <li><strong>auth 2</strong> : Able to create and update web contents.</li>
+                    <li><strong>auth 3</strong> : All access.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-cascade">
+			<div class="panel-body ">
+				<div class="ro">
+					<div class="col-mol-md-offset-2">
+						{% include "memberform.djhtml" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Form elements -->
+{% endif %}
+{% endblock %}

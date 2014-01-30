@@ -1,0 +1,5 @@
+<div class="pull-left">
+    <a href="{% url 'home' %}" id="logo">
+        <img width="300" src="{{ STATIC_URL }}frontend/images/logo.png" alt="logo" />
+    </a><!--/ #logo-->
+</div>

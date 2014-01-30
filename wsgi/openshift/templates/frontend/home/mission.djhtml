@@ -1,0 +1,32 @@
+<!-- - - - - - - - - - - - - Holder - - - - - - - - - - - - - - -->
+
+<section class="holder clearfix">
+    {% if about %}
+    {% for a in about %}
+	<div class="one-third column">
+
+		<div class="detailimg">
+
+			<div class="bordered">
+				<figure class="add-border">
+					<a class="single-image picture-icon" rel="holder" href="{{ a.cover.url }}"><img style="width: 100%" src="{{ a.cover_thumbnail.url }}" alt="" /></a>
+				</figure>
+			</div><!--/ .bordered-->
+
+			<h5>{{ a.title|title }}</h5>
+
+			<p>
+				{{ a.details|striptags|truncatewords:15 }}
+			</p>
+
+			<a href="#" class="button default">Learn More</a>
+
+		</div><!--/ .detailimg-->
+
+	</div><!--/ .one-third-->
+    {% endfor %}
+    {% endif %}
+	<div class="clear"></div>
+
+</section><!--/ .holder-->
+<!-- - - - - - - - - - - - end Holder - - - - - - - - - - - - - -->
